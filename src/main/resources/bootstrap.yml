@@ -1,0 +1,69 @@
+spring:
+  application:
+    name: TYICERP-services-file
+  profiles:
+    active: dev
+
+
+  http:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      maxFileSize: 100MB
+      maxRequestSize: 1000MB
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: TYICERP-services-file
+  Httpclient:
+    enabled: true
+  OkHttp:
+    enabled: false
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: false
+  httpclient:
+    enabled: true
+  client:
+    config:
+      feignName:
+        connectTimeout: 30000
+        readTimeout: 30000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+
+# hystrix \u4FE1\u53F7\u91CF\u9694\u79BB\uFF0C5\u79D2\u540E\u81EA\u52A8\u8D85\u65F6
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 30000
+  shareSecurityContext: true
+
+---
+spring:
+  profiles: test
+  #Cloud config path
+  cloud:
+    config:
+      uri: http://192.168.0.91:7000/
+
+---
+spring:
+  profiles: dev
+  #Cloud config path
+  cloud:
+    config:
+      uri: http://localhost:7000/
