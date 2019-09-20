@@ -8,7 +8,7 @@ FTP.BASEPATH=/home/ftpuser
 #图片服务器相关配置
 IMAGE.BASE.URL=http://192.168.*.*
 
-# ftp连接池配置
+#ftp连接池配置
 ftp.client.host=192.168.*.*
 ftp.client.port=21
 ftp.client.username=yourusername
@@ -18,7 +18,8 @@ ftp.client.passiveMode=false
 ftp.client.connectTimeout=60000
 ftp.client.dataTimeout=60000
 ftp.client.keepAliveTimeout=30
-# aliyun oss配置
+
+#aliyun oss配置
 aliyun.oss.endpoint=
 aliyun.oss.accessKeyId=
 aliyun.oss.accessKeySecret=
